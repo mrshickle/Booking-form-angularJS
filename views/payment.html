@@ -1,0 +1,207 @@
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+                Review Your Info
+            </a>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Moving From</h5>
+
+                        <p>{{ moveFrom }} {{ moveFrom2 }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Moving To</h5>
+
+                        <p>{{ moveTo }} {{ moveTo2 }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h5>Move Date</h5>
+
+                        <p>{{ moveDate }}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Arriving Time</h5>
+
+                        <p ng-show="moveTime == 'am'"> 8am - 9am </p>
+
+                        <p ng-show="moveTime == 'pm'"> 2pm - 5pm </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h5>Move Size</h5>
+
+                        <p ng-repeat="size in moveSizes" ng-show="moveSize == size.value"> {{ size.label }}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Selected Rate</h5>
+
+                        <p> {{ moveMovers }} movers - ${{ movePrice }}/hr - {{ moveHours }} minimum </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h5>Name</h5>
+
+                        <p>{{ firstName }} {{ lastName }}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Email</h5>
+
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h5>Phone</h5>
+
+                        <p>{{ phone }}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <h5>Additional Phone</h5>
+
+                        <p>{{ phone2 }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5>Notes</h5>
+
+                        <p>{{ notes }}</p>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                <!--<div class="col-xs-12">-->
+                <!--<div class="form-group">-->
+                <!--<label class="control-label" for="packingSupplies"-->
+                <!--class="control-label">Home Size: </label>-->
+                <!--<select selectpicker class="selectpicker" ng-model="packingSupplies"-->
+                <!--id="packingSupplies">-->
+                <!--<option value="79.95"> BIGGER BOXES - SMART MOVING KIT #1 - $79.95-->
+                <!--</option>-->
+                <!--<option value="139.95"> Bigger Boxes - Smart Moving Kit #2 - $139.95-->
+                <!--</option>-->
+                <!--<option value="184.95"> BIGGER BOXES - SMART MOVING KIT #3 - $184.95-->
+                <!--</option>-->
+                <!--<option value="249.95"> BIGGER BOXES - SMART MOVING KIT #4 - $249.95-->
+                <!--</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label class="control-label" for="source" class="control-label"> How did you hear about us ?  </label>
+                            <select name="source" id="source" class="selectpicker" selectpicker>
+                                <option value="Friend/ Neighbor">Friend/ Neighbor</option>
+                                <option value="Previous Customer">Previous Customer</option>
+                                <option value="Print Media">Print Media</option>
+                                <option value="Google">Google</option>
+                                <option value="Yelp">Yelp</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label class="control-label">
+                                    <input type="checkbox" ng-model="heavyItems" aria-label="Heavy Items">
+                                    I have heavy items
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label class="control-label">
+                                    <input type="checkbox" ng-model="extraTruck" aria-label="Extra Truck">
+                                    I need an extra truck
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="javascript:;" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+                    Payment Information
+                </a>
+            </div>
+
+            <div id="collapseTwo" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <form name="userForm">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p> We require $50 dollar deposit that goes towards your bill and a $10 booking fee</p>
+                                <p> Your card will be charged $60 total.</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">Credit Card Number</label>
+                                    <input class="form-control" ng-model="cardNumber">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="control-label">Name On Card</label>
+                                    <input class="form-control" ng-model="cardName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="control-label">Exp. Month</label>
+                                    <input class="form-control" ng-model="cardMonth">
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label class="control-label">Exp. Year</label>
+                                    <input class="form-control" ng-model="cardYear">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-4">
+                                    <label class="control-label">CVV</label>
+                                    <input class="form-control" ng-model="cardCvv">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label class="control-label">Billing Address</label>
+                                    <input class="form-control" ng-model="cardAddress">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label">Apt/St/#</label>
+                                    <input class="form-control" ng-model="cardAddress2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-right">
+                                <button class="btn btn-default" ng-click="submitReservation()">Submit Reservation
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

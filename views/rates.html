@@ -1,0 +1,60 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Please select rate</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    Showing rates on closest dates to selected one
+                </p>
+                <table class="table">
+                    <tr ng-repeat="rate in rates" ng-show="$index == 0">
+                        <td></td>
+                        <td ng-repeat="(key, value) in rate.rates" class="text-center"> {{ key }} movers</td>
+                    </tr>
+                    <tr ng-repeat="rate in rates" ng-class="{'bg-success' : $index == 2}">
+                        <td>
+                            <h5>{{ rate.date | date:'EEEE'}}</h5>
+
+                            <p>{{ rate.date | date:'MMMM d'}}</p>
+                        </td>
+                        <td ng-repeat="(key, value) in rate.rates" class="text-center">
+                            <!--<p>{{ key }} movers</p>-->
+                            <a ng-show="pmSwitch == 'am'" class="btn btn-default"
+                               tabindex="0"
+                               ng-class="{'btn-success' : $index == 1}"
+                               ng-disabled="rate.trucks.am_left < 1 || rate.movers.am_left < key"
+                               ng-click="selectRate(rate.date, pmSwitch, value.am, key, rate.hours)">
+                                <span class="ng-binding ng-scope">${{ value.am }}/hr</span>
+                            </a>
+
+                            <a ng-show="pmSwitch == 'pm'" class="btn btn-default"
+                               tabindex="0"
+                               ng-class="{'btn-success' : $index == 1}"
+                               ng-disabled="rate.trucks.pm_left < 1 || rate.movers.pm_left < key"
+                               ng-click="selectRate(rate.date, pmSwitch, value.pm, key, rate.hours)">
+                                <span class="ng-binding ng-scope">${{ value.pm }}/hr</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    Arriving time
+                </p>
+
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="pmSwitche" ng-model="pmSwitch" value="am" checked>
+                        8am - 9am
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="pmSwitche" ng-model="pmSwitch" value="pm">
+                        2pm - 5pm
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

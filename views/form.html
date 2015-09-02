@@ -1,0 +1,113 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Where are you moving from ?</div>
+    <div class="panel-body">
+        <form name="movingForm">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group"
+                         ng-class="{'has-error' : moveFromObject || movingForm.moveFrom.$error.required && movingForm.moveFrom.$touched,
+                  'has-success': !moveFromObject && movingForm.moveFrom.$touched && moveFromObject != undefined}">
+                        <label for="moveFrom" class="control-label">
+                            Moving From:
+                        </label>
+                        <input ng-model="moveFrom"
+                               type="text"
+                               name="moveFrom"
+                               id="moveFrom"
+                               details="moveFromObject"
+                               class="form-control"
+                               googleplace required>
+
+                        <div ng-messages="movingForm.moveFrom.$error" ng-if="movingForm.moveFrom.$touched">
+                            <div class="text-danger" ng-message="required">This is required.</div>
+                        </div>
+                        <div class="text-danger" ng-hide="!moveFromObject">We don't serve this area</div>
+                        <div class="text-success"
+                             ng-show="!moveFromObject && movingForm.moveFrom.$touched && moveFromObject != undefined">We
+                            serve
+                            this area
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group"
+                         ng-class="{
+                    'has-error' : movingForm.dateFrom.$error.required && movingForm.dateFrom.$touched || dateResult == '3' || zipNotSelected && moveFromObject == undefined,
+                    'has-warning' : dateResult == '1' || dateResult == '2',
+                    'has-success' : dateResult == '0'
+                    }"
+                            >
+                        <label for="moveDate" class="control-label"> Move Date: </label>
+                        <input id="moveDate"
+                               ng-focus="onDateFocus()"
+                               pikaday="pickMoveDate"
+                               on-select="onMoveDaySelect(pikaday)"
+                               ng-model="moveDate"
+                               name="dateFrom"
+                               required
+                               ng-disabled="zipNotSelected && moveFromObject == undefined"
+                               class="form-control">
+
+                        <div ng-messages="movingForm.dateFrom.$error" ng-if="movingForm.dateFrom.$touched">
+                            <div class="text-danger"
+                                 ng-show="movingForm.dateFrom.$error.required && !zipNotSelected && moveFromObject != undefined">
+                                This is required.
+                            </div>
+                            <div class="text-success" ng-show="dateResult == '0'">Available</div>
+                            <div class="text-warning" ng-show="dateResult == '1'">Only Morning Moves</div>
+                            <div class="text-warning" ng-show="dateResult == '2'">Only Afternoon Moves</div>
+                            <div class="text-danger" ng-show="dateResult == '3'">Not Available</div>
+                            <div class="text-danger" ng-show="zipNotSelected && moveFromObject == undefined">Enter
+                                Address
+                                First
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-8">
+                    <div class="form-group"
+                         ng-class="{'has-error' : moveSizeValue == '9' || moveSizeValue == '11' ||
+                    moveSizeValue > 3 && dateResult == '2',
+                    'has-success' : moveSizeValue != '9' && moveSizeValue != undefined || moveSizeValue != '11' && moveSizeValue != undefined ||
+                    moveSizeValue < 3 && dateResult < '2' && moveSizeValue != undefined
+                    }">
+                        <label for="moveSize" class="control-label">Home Size: </label>
+                        <select class="selectpicker"
+                                id="moveSize"
+                                name="moveSize"
+                                selectpicker ng-model="moveSizeValue"
+                                ng-options="size.value as size.label for size in moveSizes"
+                                data-width="100%">
+                        </select>
+
+                        <div ng-messages="movingForm.moveSize.$error" ng-if="movingForm.moveSizeValue.$touched">
+                        </div>
+                        <div class="text-danger" ng-show="moveSizeValue == '9' || moveSizeValue == '11'">Please Call The
+                            Office
+                        </div>
+                        <div class="text-danger" ng-show="moveSizeValue > 3 && dateResult == '2'">Not Available For This
+                            Size
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <input type="button" class="btn btn-default"
+                           ng-class="{'disabled': moveFromObject || movingForm.moveFrom.$error.required
+                   ||  movingForm.dateFrom.$error.required || dateResult == '3' ||
+                   moveSizeValue == '9' || moveSizeValue == '11' ||
+                    moveSizeValue > 3 && dateResult == '2' || moveSizeValue == undefined
+                   }" value="Get
+            Rates!" ng-click="getRates(moveFrom, moveSize)">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Please Fill Out Your Info</div>
+    <div class="panel-body">
+        <form name="userForm">
+            <div class="row">
+                <div class="col-xs-9">
+                    <div class="form-group">
+                        <label class="control-label">Moving From </label>
+                        <input class="form-control" ng-model="moveFrom" disabled>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label">Apt/St/#</label>
+                        <input class="form-control" ng-model="moveFrom2">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-9">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.moveTo.$error.required && userForm.moveTo.$touched}">
+                        <label class="control-label">Moving To </label>
+                        <input required class="form-control" name="moveTo" ng-model="moveTo" googleplace2>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label class="control-label">Apt/St/#</label>
+                        <input class="form-control" ng-model="moveTo2">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.firstName.$error.required && userForm.firstName.$touched}">
+                        <label class="control-label">First Name</label>
+                        <input class="form-control" ng-model="firstName" name="firstName" required>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.lastName.$error.required && userForm.lastName.$touched}">
+                        <label class="control-label">Last Name</label>
+                        <input class="form-control" ng-model="lastName" name="lastName" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.email.$error.required && userForm.email.$touched || userForm.email.$error.email && userForm.email.$touched}">
+                        <label class="control-label">Email</label>
+                        <input class="form-control" ng-model="email" name="email" type="email" required>
+                    </div>
+                </div>
+                <span ng-show="userForm.phone.$error.phoneField">Please enter a valid phone number.</span>
+
+                <div class="col-xs-4">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.phone.$error.required  && userForm.phone.$touched }">
+                        <label class="control-label">Phone Number</label>
+                        <input class="form-control" ng-model="phone" name="phone" required>
+                    </div>
+                    {{ userForm.phone.$error.phoneField }}
+                </div>
+                <div class="col-xs-4">
+                    <div class="form-group"
+                         ng-class="{'has-error' :  userForm.phone2.$error.required  && userForm.phone2.$touched }">
+                        <label class="control-label">Add. Number</label>
+                        <input class="form-control" ng-model="phone2" name="phone2" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">Notes</label>
+                        <input class="form-control" ng-model="notes">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button ng-disabled="userForm.$invalid" class="btn btn-default" ng-click="toCheckout()">Proceed to
+                        Checkout
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

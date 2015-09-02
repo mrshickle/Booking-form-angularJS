@@ -1,0 +1,23 @@
+{
+  "name": "abcform",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-google-places-autocomplete": "~0.2.7",
+    "angular-route": "~1.4.3",
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "bootstrap-select": "~1.7.3",
+    "pikaday-angular": "~2.0.0",
+    "angular-bootstrap-select": "~0.0.5",
+    "angular-messages": "~1.4.3"
+  }
+}
